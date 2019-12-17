@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="icon" href="./img/favicon.png">
+    <link rel="stylesheet" href="./css/styles.min.css">
+</head>
+<body>
+
+<div class="chat">
+    <div id="sidebar" class="chat__sidebar">
+
+    </div>
+    <div class="chat__main">
+        <div id="messages" class="chat__messages"></div>
+        <div class="compose">
+            <form>
+                <input name="message" type="text" placeholder="Message" required>
+                <button>Send</button>
+            </form>
+            <button id="share-location">Share Location</button>
+        </div>
+    </div>
+</div>
+
+
+<script id="message-template" type="text/html">
+    <div class="message">
+        <p>
+            <span class="message__name">{{username}}:</span>
+            <span class="message__meta">{{createdAt}}</span>
+        </p>
+        <p style="display: inline"> {{message}} <p style="display: inline">{{status}}</p></p>
+    </div>
+</script>
+<script id="link-template" type="text/html">
+    <div class="message">
+        <p>
+            <span class="message__name">{{username}}:</span>
+            <span class="message__meta">{{createdAt}}</span>
+        </p>
+        <a style="display: inline" target="_blank" href="{{link}}">{{linkName}} </a>
+    </div>
+</script>
+<script id="chat-notification-template" type="text/html">
+    <div style="font-size: x-small; background-color: #e4e4f1;">
+        <span>{{notification}}</span>
+        <span></span>
+    </div>
+</script>
+
+<script id="sidebar-template" type="text/html">
+<div>
+    <h1 class="room-title">{{room}}</h1>
+    <h3 class="list-title">Users</h3>
+    <ul class="users">
+        {{#users}}
+            <li>{{username}}</li>
+        {{/users}}
+    </ul>
+</div>
+</script>
+<script id="message-status-success-template" type="text/html">
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+    </div>
+</script>
+<script id="message-status-failure-template" type="text/html">
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+    </div>
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+</body>
+</html>
