@@ -5,8 +5,9 @@
         createdAt: new Date().getTime()
     }
  }
- const generateLinkMessage = (link, linkName) => {
+ const generateLinkMessage = (link, linkName, username) => {
      return {
+         username,
          link,
          linkName,
          createdAt: new Date().getTime()

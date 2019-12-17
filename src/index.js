@@ -56,7 +56,7 @@ io.on('connection', (socket) => {
         if (!latitude || !longitude) {
             return callback('Location not delivered. Latitude and Longitude are require')
         }
-        io.to(user.room).emit('linkMessage', generateLinkMessage(`https://google.com/maps?q=${latitude},${longitude}`, 'My Current Location'))
+        io.to(user.room).emit('linkMessage', generateLinkMessage(`https://google.com/maps?q=${latitude},${longitude}`, 'My Current Location', user.username))
         callback()
 
     })

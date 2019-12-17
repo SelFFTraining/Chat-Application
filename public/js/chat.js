@@ -53,8 +53,9 @@ socket.on('notification', (notification)=>{
     $messages.insertAdjacentHTML("beforeend", noficationTemplate)
     autoscroll()
 })
-socket.on('linkMessage', ({link, linkName, createdAt})=>{
+socket.on('linkMessage', ({link, linkName, createdAt, username})=>{
     const msgHtml = Mustache.render($linkTemplate, {
+        username: username,
         link,
         linkName,
         createdAt: moment(createdAt).format('h:mm a')
